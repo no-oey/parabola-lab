@@ -108,7 +108,7 @@ ol{padding-left:24px}
   <div class="hero">
     <div class="eyebrow">STEP 1 · OBSERVE & UNDERSTAND</div>
     <h1 id="title1" tabindex="-1">같은 거리가 만드는 곡선</h1>
-    <p> 점을 움직이고, 거리를 비교하며 포물선의 방정식을 직접 이해해보자.</p>
+    <p> ·점을 움직이고, 거리를 비교하며 포물선의 방정식을 직접 이해해보자.</p>
   </div>
 
   <article class="card">
@@ -437,12 +437,11 @@ document.querySelectorAll("[data-step]").forEach(b=>{
   b.addEventListener("click",()=>showStep(Number(b.dataset.step)));
 });
 
-/* SVG座標系：縦横を同じ倍率にし、幾何学的な距離や角度を保つ。 */
+/* SVG coordinate system: preserve equal horizontal and vertical scale. */
 function plane(svg,span=7,originX=300,originY=210){
   svg.replaceChildren();
   const scale=Math.min(270/span,40);
   const X=x=>originX+x*scale, Y=y=>originY-y*scale;
-  let counter=0;
   const clipId=svg.id+"-clip";
   const defs=el("defs");
   const clip=el("clipPath",{id:clipId});
@@ -684,7 +683,7 @@ function renderBall(){
 }
 $("timeRange").oninput=renderBall;
 
-/* 問題は初回提出を採点し、二重加点を防止する。 */
+/* Quiz scoring: each question is scored once per attempt. */
 const quizzes=[
   {
     type:"OX",level:"개념",q:"포물선 위의 점에서 초점까지의 거리와 준선까지의 거리는 같다.",
@@ -703,7 +702,7 @@ const quizzes=[
   {
     type:"객관식",level:"기본",q:"$y^2=-12x$의 초점과 준선으로 옳은 것은?",
     options:["초점 (−3, 0), 준선 x = 3","초점 (3, 0), 준선 x = −3","초점 (−12, 0), 준선 x = 12"],
-    answer:0,explain:"y^2=4px일 때, $4p=-12$에서 $p=-3$입니다. 초점은 $(-3,0)$, 준선은 $x=3$입니다."
+    answer:0,explain:"$y^2=4px$일 때, $4p=-12$에서 $p=-3$입니다. 초점은 $(-3,0)$, 준선은 $x=3$입니다."
   },
   {
     type:"그래프 해석",level:"기본",q:"아래 그래프의 초점은 F(−2, 0)입니다. 포물선의 방정식은?",
@@ -712,7 +711,7 @@ const quizzes=[
   },
   {
     type:"계산",level:"적용",q:"$y^2=8x$ 위의 점 P(2, 4)에서 준선까지의 거리는? 숫자만 입력하세요.",
-    answer:4,explain:"$y^2=4px$일 때, p=2$이므로 준선은 $x=-2$입니다. $PH=|2-(-2)|=4$입니다."
+    answer:4,explain:"$y^2=4px$일 때, $p=2$이므로 준선은 $x=-2$입니다. $PH=|2-(-2)|=4$입니다."
   },
   {
     type:"계산",level:"적용",q:"초점이 F(−3, 0), 준선이 x = 3인 포물선에서 초점과 준선 사이의 거리는?",
@@ -730,7 +729,7 @@ const quizzes=[
   },
   {
     type:"계산",level:"도전",q:"$y^2=12x$에서 초점을 지나고 축에 수직인 현의 길이는?",
-    answer:12,explain:"y^2=4px일 때, $p=3$이므로 초점을 지나는 직선은 $x=3$입니다. 대입하면 $y^2=36$, 따라서 교점의 y좌표는 6과 −6입니다. 현의 길이는 $6-(-6)=12$입니다."
+    answer:12,explain:"$y^2=4px$일 때, $p=3$이므로 초점을 지나는 직선은 $x=3$입니다. 대입하면 $y^2=36$, 따라서 교점의 y좌표는 6과 −6입니다. 현의 길이는 $6-(-6)=12$입니다."
   }
 ];
 let answers=Array(quizzes.length).fill(null);
